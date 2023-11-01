@@ -257,7 +257,7 @@ export const StoryListItem = ({
                 profileName,
               })
             ) : (
-              <Text style={styles.avatarText}>{profileName}</Text>
+              <Text style={styles.avatarText}>{profileName}{'bvxfbvjxb'}</Text>
             )}
           </View>
           <View style={styles.closeIconContainer}>
