@@ -13,7 +13,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import GestureRecognizer from 'react-native-swipe-gestures';
-
+import Video from 'react-native-video';
 import { usePrevious, isNullOrWhitespace } from './helpers';
 import {
   IUserStoryItem,
@@ -209,11 +209,30 @@ export const StoryListItem = ({
     >
       <SafeAreaView>
         <View style={styles.backgroundContainer}>
-          <Image
-            onLoadEnd={() => start()}
-            source={{ uri: content[current].story_image }}
-            style={[styles.image, storyImageStyle]}
-          />
+           {content[current].type.startsWith("video") ?
+          <View>
+            <Video 
+              source={{ uri: content[current].story_image }} 
+              // onLoadEnd={()=>start()} 
+              style={{
+              // alignSelf: 'center',
+              // height: '80%',
+              // resizeMode: 'contain',
+              height:500,
+              width:500
+              }}
+            />
+          </View>:
+          <View>
+            <Image
+              onLoadEnd={() => start()}
+              source={{ uri: content[current].story_image }}
+              style={[styles.image, storyImageStyle]}
+            />
+            <View style={{flex:1,justifyContent:'center',alignItems:'center',position:'absolute',left:width/2}}>
+                <Text style={{color:`${content[current].font_color}`,top:width/2,position:'absolute',fontSize:20}}>{content[current].text}</Text>
+            </View>
+          </View>}
           {load && (
             <View style={styles.spinnerContainer}>
               <ActivityIndicator size="large" color={'white'} />
