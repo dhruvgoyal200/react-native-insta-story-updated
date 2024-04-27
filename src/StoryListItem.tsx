@@ -230,7 +230,7 @@ export const StoryListItem = ({
               style={[styles.image, storyImageStyle]}
             />
             <View style={{flex:1,justifyContent:'center',alignItems:'center',position:'absolute',left:width/2}}>
-                <Text style={{color:`${content[current].font_color}`,top:width/2,position:'absolute',fontSize:20}}>{content[current].text}</Text>
+                <Text style={{color:`${content[current].font_color}`,top:width/2,position:'absolute',fontSize:20}}>{content[current].text ? content[current].text : content[current].title}</Text>
             </View>
           </View>}
           {load && (
